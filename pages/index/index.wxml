@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class="page-body">
+  <view class="page-section">
+    <view class="weui-cells__title">DNA length</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input inputM" placeholder="Input DNA length" bindinput='lenInputChange' 
+        value="{{lenInput}}" type='digit'/>
+        <picker class='weui-input inputP' range="{{arrayLenUnit}}" value='{{lenIdx}}'
+        bindchange='lenUnitChange'>
+          {{arrayLenUnit[lenIdx]}}
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">DNA mass</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input inputM" placeholder="Input DNA mass" bindinput='massInputChange' 
+        value="{{massInput}}" type='digit'/>
+        <picker class='weui-input inputP' value="{{massIdx}}" range="{{arrayMassUnit}}" 
+        bindchange='massUnitChange'>
+          {{arrayMassUnit[massIdx]}}
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">DNA mole</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input inputM" placeholder="Input DNA mole" bindinput='moleInputChange' 
+        value="{{moleInput}}" type='digit'/>
+        <picker class='weui-input inputP' value="{{moleIdx}}" range="{{arrayMoleUnit}}" 
+        bindchange='moleUnitChange'>
+          {{arrayMoleUnit[moleIdx]}}
+        </picker>
+      </view>
+    </view>
+  </view>
+</view>

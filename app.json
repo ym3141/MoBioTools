@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "MoBio Tools",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [
+      { "text": "DNA/Protein", "pagePath": "pages/index/index" },
+      { "text": "Codons", "pagePath": "pages/logs/logs" }
+    ]
+  }
+  
+}

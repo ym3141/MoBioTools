@@ -1,0 +1,10 @@
+@import "../../lib/weui.wxss";
+
+/**index.wxss**/
+.inputM {
+  flex-grow: 1
+}
+
+.inputU {
+  width: 80rpx;
+}
