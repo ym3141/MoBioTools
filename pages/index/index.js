@@ -18,7 +18,7 @@ Page({
   },
 
 
-  updateDNA: function (changeType) {
+  updateDNA: function(changeType) {
     // Fuction to calculate results and updates corresponding box
     // Everything is firstly converted to bp, ng and nmol firstly
     let dLen = Number(this.data.lenInput) * (1000 ** this.data.lenIdx);
@@ -30,29 +30,41 @@ Page({
       case 0:
       case 1:
       case 3:
-        this.setData({ moleInput: 0 });
-        if (dLen != NaN && dLen != 0 && dMass != NaN && dMass != 0){
+        this.setData({
+          moleInput: 0
+        });
+        if (dLen != NaN && dLen != 0 && dMass != NaN && dMass != 0) {
           let outMole = dMass / (dLen * 617.9 + 36.04) / strFactor;
           let outputM = findGoodUnitMo(outMole);
-          this.setData({ moleInput: outputM[0].toFixed(3) });
-          this.setData({ moleIdx: outputM[1] });
+          this.setData({
+            moleInput: outputM[0].toFixed(3)
+          });
+          this.setData({
+            moleIdx: outputM[1]
+          });
         }
         break;
       case 2:
-        this.setData({ massInput: 0 });
+        this.setData({
+          massInput: 0
+        });
         if (dLen != NaN && dLen != 0 && dMole != NaN && dMole != 0) {
-          let outMass = dMole * (dLen * 617.9 + 36.04) * strFactor  ;
+          let outMass = dMole * (dLen * 617.9 + 36.04) * strFactor;
           let outputM = findGoodUnitMa(outMass);
-          this.setData({ massInput: outputM[0].toFixed(3) });
-          this.setData({ massIdx: outputM[1] });
+          this.setData({
+            massInput: outputM[0].toFixed(3)
+          });
+          this.setData({
+            massIdx: outputM[1]
+          });
         }
         break;
     }
   },
 
-  updateProtein: function (changeType) {
+  updateProtein: function(changeType) {
     this.setData({
-      pSize: (Number(this.data.lenInput) * 110 / 3).toFixed(2)
+      pSize: (Number(this.data.lenInput) * 110 / 3000).toFixed(2)
     });
   },
 
@@ -65,21 +77,21 @@ Page({
     this.updateProtein(0);
   },
 
-  massUnitChange: function (e) {
+  massUnitChange: function(e) {
     this.setData({
       massIdx: e.detail.value
     })
     this.updateDNA(1);
   },
 
-  moleUnitChange: function (e) {
+  moleUnitChange: function(e) {
     this.setData({
       moleIdx: e.detail.value
     })
     this.updateDNA(2)
   },
 
-  lenInputChange: function (e) {
+  lenInputChange: function(e) {
     this.setData({
       lenInput: e.detail.value
     })
@@ -87,42 +99,41 @@ Page({
     this.updateProtein(0);
   },
 
-  massInputChange: function (e) {
+  massInputChange: function(e) {
     this.setData({
       massInput: e.detail.value
     })
     this.updateDNA(1);
   },
 
-  moleInputChange: function (e) {
+  moleInputChange: function(e) {
     this.setData({
       moleInput: e.detail.value
     })
     this.updateDNA(2);
   },
 
-  strandChange: function (e) {
+  strandChange: function(e) {
     this.setData({
       ssDNA: e.detail.value
     })
     this.updateDNA(3);
   },
 
-  onLoad: function () {
-  }
+  onLoad: function() {}
 })
 
 
-function findGoodUnitMo(nmole){
+function findGoodUnitMo(nmole) {
   // Assuming all input in nmole
   let logM = Math.log10(nmole);
-  if (logM >=2){
+  if (logM >= 2) {
     return [nmole / 1000, 0];
-  } else if (logM >= -1){
+  } else if (logM >= -1) {
     return [nmole, 1];
-  } else if (logM >= -4){
+  } else if (logM >= -4) {
     return [nmole * 1000, 2];
-  } else{
+  } else {
     return [nmole * 1000000, 3];
   }
 }
