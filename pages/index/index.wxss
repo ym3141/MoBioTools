@@ -5,6 +5,27 @@
   flex-grow: 1
 }
 
-.inputU {
-  width: 80rpx;
+.inputP{
+  background: white;
+  margin-left: 1rpx;
+  margin-right: 1rpx;
+  text-align: center
+}
+
+.pickerView{
+  background: lightslategray; 
+  width: 100rpx;
+  margin: 1rpx
+}
+
+.BT_switch{
+  flex-grow: 1
+} 
+
+.outputProt{
+  align-content: right;
+  flex-grow: 1;
+  font-size: 35rpx;
+  color: black;
+  margin: 0;
 }

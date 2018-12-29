@@ -6,10 +6,12 @@
       <view class="weui-cell weui-cell_input">
         <input class="weui-input inputM" placeholder="Input DNA length" bindinput='lenInputChange' 
         value="{{lenInput}}" type='digit'/>
-        <picker class='weui-input inputP' range="{{arrayLenUnit}}" value='{{lenIdx}}'
-        bindchange='lenUnitChange'>
-          {{arrayLenUnit[lenIdx]}}
-        </picker>
+        <view class='weui-input pickerView'>
+          <picker class='weui-input inputP' range="{{arrayLenUnit}}" value='{{lenIdx}}'
+          bindchange='lenUnitChange'>
+            {{arrayLenUnit[lenIdx]}}
+          </picker>
+        </view>
       </view>
     </view>
   </view>
@@ -19,10 +21,12 @@
       <view class="weui-cell weui-cell_input">
         <input class="weui-input inputM" placeholder="Input DNA mass" bindinput='massInputChange' 
         value="{{massInput}}" type='digit'/>
-        <picker class='weui-input inputP' value="{{massIdx}}" range="{{arrayMassUnit}}" 
-        bindchange='massUnitChange'>
-          {{arrayMassUnit[massIdx]}}
-        </picker>
+        <view class='weui-input pickerView'>
+          <picker class='weui-input inputP' value="{{massIdx}}" range="{{arrayMassUnit}}" 
+          bindchange='massUnitChange'>
+            {{arrayMassUnit[massIdx]}}
+          </picker>
+        </view>
       </view>
     </view>
   </view>
@@ -32,10 +36,31 @@
       <view class="weui-cell weui-cell_input">
         <input class="weui-input inputM" placeholder="Input DNA mole" bindinput='moleInputChange' 
         value="{{moleInput}}" type='digit'/>
-        <picker class='weui-input inputP' value="{{moleIdx}}" range="{{arrayMoleUnit}}" 
-        bindchange='moleUnitChange'>
-          {{arrayMoleUnit[moleIdx]}}
+        <view class='weui-input pickerView'>
+          <picker class='weui-input inputP' value="{{moleIdx}}" range="{{arrayMoleUnit}}" 
+          bindchange='moleUnitChange'>
+           {{arrayMoleUnit[moleIdx]}}
         </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+    <view class="page-section">
+    <view class="weui-cells__title">Protein weight if CDS (approx)</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input" style='text-align: right'>
+        <text class='weui-cells__title outputProt'>{{pSize}}</text>
+        <text class='weui-cell'>KDa</text>
+      </view>
+    </view>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells__title">Double/Single strand DNA</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <switch class='weui-cell_switch BT_switch' checked='{{ssDNA}}' 
+        bindchange='strandChange'></switch>
+        <text>{{ssDNA ? "Single" : "Double"}} strand mode</text>
       </view>
     </view>
   </view>

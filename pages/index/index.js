@@ -12,7 +12,9 @@ Page({
     moleIdx: 2,
     lenInput: [],
     massInput: [],
-    moleInput: []
+    moleInput: [],
+    ssDNA: false,
+    pSize: 0
   },
 
 
@@ -22,25 +24,26 @@ Page({
     let dLen = Number(this.data.lenInput) * (1000 ** this.data.lenIdx);
     let dMass = Number(this.data.massInput) * (1000 ** (2 - this.data.massIdx));
     let dMole = Number(this.data.moleInput) * (1000 ** (1 - this.data.moleIdx));
-
+    let strFactor = this.data.ssDNA + 1;
     // Decide which box to update
     switch (changeType) {
       case 0:
       case 1:
+      case 3:
         this.setData({ moleInput: 0 });
         if (dLen != NaN && dLen != 0 && dMass != NaN && dMass != 0){
-          let outMole = dMass / (dLen * 617.9 + 36.04);
+          let outMole = dMass / (dLen * 617.9 + 36.04) / strFactor;
           let outputM = findGoodUnitMo(outMole);
-          this.setData({ moleInput: outputM[0] });
+          this.setData({ moleInput: outputM[0].toFixed(3) });
           this.setData({ moleIdx: outputM[1] });
         }
         break;
       case 2:
         this.setData({ massInput: 0 });
         if (dLen != NaN && dLen != 0 && dMole != NaN && dMole != 0) {
-          let outMass = dMole * (dLen * 617.9 + 36.04);
+          let outMass = dMole * (dLen * 617.9 + 36.04) * strFactor  ;
           let outputM = findGoodUnitMa(outMass);
-          this.setData({ massInput: outputM[0] });
+          this.setData({ massInput: outputM[0].toFixed(3) });
           this.setData({ massIdx: outputM[1] });
         }
         break;
@@ -48,7 +51,9 @@ Page({
   },
 
   updateProtein: function (changeType) {
-    return;
+    this.setData({
+      pSize: (Number(this.data.lenInput) * 110 / 3).toFixed(2)
+    });
   },
 
   //事件处理函数
@@ -94,6 +99,13 @@ Page({
       moleInput: e.detail.value
     })
     this.updateDNA(2);
+  },
+
+  strandChange: function (e) {
+    this.setData({
+      ssDNA: e.detail.value
+    })
+    this.updateDNA(3);
   },
 
   onLoad: function () {

@@ -1,19 +1,24 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/protein/protein"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "MoBio Tools",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "list": [
-      { "text": "DNA/Protein", "pagePath": "pages/index/index" },
-      { "text": "Codons", "pagePath": "pages/logs/logs" }
+      {
+        "text": "DNA",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "text": "Protein",
+        "pagePath": "pages/protein/protein"
+      }
     ]
   }
-  
 }
